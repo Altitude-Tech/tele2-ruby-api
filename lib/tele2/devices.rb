@@ -14,7 +14,7 @@ module Tele2
     end
 
     def find_by_device_id(id)
-      @options = { query: { accountId: id.to_s }, basic_auth: self.auth_params }
+      @options = { basic_auth: @auth }
       self.class.get("/devices/#{id}", @options)
     end
 
