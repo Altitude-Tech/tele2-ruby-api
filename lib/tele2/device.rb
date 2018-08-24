@@ -9,6 +9,18 @@ module Tele2
       @device = device
     end
 
+    def location
+      Tele2::Location.new(self.client, iccid)
+    end
+
+    def usage
+      Tele2::Usage.new(self.client, iccid)
+    end
+
+    def session
+      Tele2::Session.new(self.client, iccid)
+    end
+
     def iccid
       unless @device['iccid'] then request_api_data end
       @device['iccid']

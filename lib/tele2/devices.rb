@@ -1,4 +1,7 @@
 require_relative 'device'
+require_relative 'location'
+require_relative 'usage'
+require_relative 'session'
 
 module Tele2
 
