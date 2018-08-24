@@ -6,18 +6,23 @@ module Tele2
     base_uri 'https://restapi3.jasper.com/rws/api/v1/'
 
     def initialize(usr, key)
+
       @auth = {:username => usr, :password => key}
 
-      @username = usr
-      @api_key = key
+      @options = { basic_auth: @auth }
+
     end
 
-    private
+    def devices
+      @devices = Tele2::Devices.new(self)
+    end
 
-    def auth_params
-      { basic_auth: {:username => @username, :password => @password} } if @username && @password
+    def get_request(url)
+      self.class.get(url, @options)
     end
 
   end
 
 end
+
+
