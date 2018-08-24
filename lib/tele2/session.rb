@@ -13,6 +13,22 @@ module Tele2
       @session
     end
 
+    def ip_address
+      @session['ipAddress']
+    end
+
+    def has_ip_address?
+      ip_address != nil
+    end
+
+    def start_date
+      @session['dateSessionStarted']
+    end
+
+    def end_date
+      @session['dateSessionEnded']
+    end
+
   end
 
 end

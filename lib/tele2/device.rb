@@ -87,7 +87,7 @@ module Tele2
     end
 
     def has_fixed_ip_address?
-      fixed_ip_address == 'null'
+      fixed_ip_address != nil
     end
 
     def euiccid
@@ -106,7 +106,7 @@ module Tele2
     end
 
     def has_modem_id?
-      modem_id == 'null'
+      modem_id != nil
     end
 
     def global_sim_type
