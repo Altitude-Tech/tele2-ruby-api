@@ -35,6 +35,10 @@ module Tele2
       @device['iccid']
     end
 
+    def has_valid_iccid?
+      @device['iccid'] != nil
+    end
+
     def imsi
       unless @device['imsi'] then request_api_data end
       @device['imsi']
