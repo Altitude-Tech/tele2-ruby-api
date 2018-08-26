@@ -30,6 +30,7 @@ module Tele2
 
     def get_device(iccid)
       response = self.client.get_request("/devices/#{iccid.to_s}")
+      return Device.new(self.client, response)
     end
 
   end

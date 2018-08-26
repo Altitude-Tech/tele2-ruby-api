@@ -4,8 +4,9 @@ module Tele2
 
     attr_accessor :client
 
-    def initialize(client, device)
+    def initialize(client, device=nil)
       self.client = client
+
       @device = device
     end
 
