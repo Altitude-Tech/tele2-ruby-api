@@ -9,6 +9,14 @@ module Tele2
       @device = device
     end
 
+    def save
+      update_params = Hash.new
+      update_params[:accountCustom1] = @device['accountCustom1']
+      update_params[:customer] = @device['customer']
+
+      self.client.put_request("/devices/#{@device['iccid']}", update_params)
+    end
+
     def location
       Tele2::Location.new(self.client, iccid)
     end
@@ -117,6 +125,24 @@ module Tele2
     def account_id
       unless @device['accountId'] then request_api_data end
       @device['accountId']
+    end
+
+    def account_custom1
+      unless @device['accountCustom1'] then request_api_data end
+      @device['accountCustom1']
+    end
+
+    def account_custom1=(str)
+      @device['accountCustom1'] = str
+    end
+
+    def customer
+      unless @device['customer'] then request_api_data end
+      @device['customer']
+    end
+
+    def customer=(str)
+      @device['customer'] = str
     end
 
     def request_api_data
