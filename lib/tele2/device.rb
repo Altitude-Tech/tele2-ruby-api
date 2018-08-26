@@ -14,6 +14,7 @@ module Tele2
       update_params = Hash.new
       update_params[:accountCustom1] = @device['accountCustom1']
       update_params[:customer] = @device['customer']
+      update_params[:status] = @device['status']
 
       self.client.put_request("/devices/#{@device['iccid']}", update_params)
     end
@@ -52,6 +53,10 @@ module Tele2
     def status
       unless @device['status'] then request_api_data end
       @device['status']
+    end
+
+    def status=(str)
+      @device['status'] = str
     end
 
     def rate_plan
