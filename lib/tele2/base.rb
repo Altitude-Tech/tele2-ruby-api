@@ -17,6 +17,10 @@ module Tele2
       @devices = Tele2::Devices.new(self)
     end
 
+    def messages
+      @messages = Tele2::Messages.new(self)
+    end
+
     def get_request(url)
       #@options.marge(params)
       self.class.get(url, @options)
@@ -34,5 +38,3 @@ module Tele2
   end
 
 end
-
-

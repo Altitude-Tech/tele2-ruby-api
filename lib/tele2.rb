@@ -4,6 +4,7 @@ require 'json'
 require_relative 'tele2/version'
 require_relative 'tele2/base'
 require_relative 'tele2/devices'
+require_relative 'tele2/messages'
 
 
 #tele2 = Tele2::Devices.new('Frazerbarnes', '9a13a30b-d8d8-4e01-8908-04eefcf1a9e7')
@@ -27,3 +28,4 @@ else
   puts("INVALID!!")
 end
 
+client.messages.get_message('23232')
