@@ -69,6 +69,6 @@ module Tele2
       @message['dateModified']
     end
 
-  end
+  end #class
 
-end
+end #module
