@@ -20,7 +20,8 @@ module Tele2
     end
 
     def location
-      Tele2::Location.new(self.client, iccid)
+      response = Devices.get_location_history(@device[iccid])
+      Tele2::Location.new(self.client, response['simlocations'].first)
     end
 
     def usage

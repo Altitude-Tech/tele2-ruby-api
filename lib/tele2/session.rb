@@ -17,6 +17,10 @@ module Tele2
       @session['ipAddress']
     end
 
+    def ipv6_address
+      @session['ipv6Address']
+    end
+
     def has_ip_address?
       ip_address != nil
     end

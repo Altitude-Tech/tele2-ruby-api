@@ -10,6 +10,10 @@ module Tele2
       @location = location
     end
 
+    def locatiom
+      @location
+    end
+
     def iccid
       unless @location['iccid'] then request_api_data end
       @location['iccid']

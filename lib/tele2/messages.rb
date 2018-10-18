@@ -19,8 +19,8 @@ module Tele2
     #   response = self.client.get_request("/devices/#{iccid.to_s}/smsMessages")
     # end
 
-    def find_from_date(from_date)
-      response = self.client.get_request("/smsMessages?fromDate=#{CGI.escape(from_date.iso8601.to_s)}")
+    def get_from_date(acount_id, from_date)
+      response = self.client.get_request("/smsMessages?acountId=#{account_id}&fromDate=#{CGI.escape(from_date.iso8601.to_s)}")
 
       messages = Array.new
       response['smsMsgIds'].each do |message|
@@ -30,8 +30,12 @@ module Tele2
       return messages
     end
 
-    def find_by_account_id(account_id, from_date)
-      response = self.client.get_request("/smsMessages?accountId=#{account_id.to_s}&fromDate=#{CGI.escape(from_date.iso8601.to_s)}")
+    def get_message_for_device(acount_id, from_date, iccid)
+      response = self.client.get_request("/smsMessages?acountId=#{account_id}&fromDate=#{CGI.escape(from_date.iso8601.to_s)}&iccid=#{iccid}")
+    end
+
+    def get_from_time_period(account_id, from_date, to_date)
+      response = self.client.get_request("/smsMessages?acountId=#{account_id}&fromDate=#{CGI.escape(from_date.iso8601.to_s)}&toDate=#{CGI.escape(to_date.iso8601.to_s)}")
 
       messages = Array.new
       response['smsMsgIds'].each do |message|
@@ -41,17 +45,5 @@ module Tele2
       return messages
     end
 
-    def find_by_time_period(from_date, to_date)
-      response = self.client.get_request("/smsMessages?fromDate=#{CGI.escape(from_date.iso8601.to_s)}&toDate=#{CGI.escape(to_date.iso8601.to_s)}")
-
-      messages = Array.new
-      response['smsMsgIds'].each do |message|
-        messages << get_message(message)
-      end
-
-      return messages
-    end
-
-  end
-
-end
+  end #class
+end #module

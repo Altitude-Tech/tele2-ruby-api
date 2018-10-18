@@ -1,6 +1,6 @@
 module Tele2
 
-  class ChangeRecord
+  class EditRecord
 
     attr_accessor :client
 

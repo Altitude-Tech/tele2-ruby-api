@@ -21,6 +21,10 @@ module Tele2
       @messages = Tele2::Messages.new(self)
     end
 
+    def users
+      @users = Tele2::Users.new(self)
+    end
+
     def get_request(url)
       #@options.marge(params)
       self.class.get(url, @options)
@@ -35,6 +39,6 @@ module Tele2
       puts(self.class.put(url, @options))
     end
 
-  end
+  end #class
 
-end
+end #module

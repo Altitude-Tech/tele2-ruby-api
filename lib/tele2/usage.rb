@@ -9,36 +9,15 @@ module Tele2
       @usage = self.client.get_request("/devices/#{iccid.to_s}/ctdUsages")
     end
 
-    def iccid
-      unless @usage['iccid'] then request_api_data end
-      @usage['iccid']
-    end
-
-    def imsi
-      unless @usage['imsi'] then request_api_data end
-      @usage['imsi']
+    def usage
+      @usage
     end
 
     def msisdn
       unless @usage['msisdn'] then request_api_data end
       @usage['msisdn']
     end
-
-    def imei
-      unless @usage['imei'] then request_api_data end
-      @usage['imei']
-    end
-
-    def status
-      unless @usage['status'] then request_api_data end
-      @usage['status']
-    end
-
-    def rate_plan
-      unless @usage['ratePlan'] then request_api_data end
-      @usage['ratePlan']
-    end
-
+    
     def communication_plan
       unless @usage['communicationPlan'] then request_api_data end
       @usage['communicationPlan']
