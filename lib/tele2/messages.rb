@@ -14,7 +14,7 @@ module Tele2
       response = self.client.get_request("/smsMessages/#{smsMsgId.to_s}")
       return Message.new(self.client, response)
     end
-    
+
     def get_from_date(acount_id, from_date)
       response = self.client.get_request("/smsMessages?acountId=#{account_id}&fromDate=#{CGI.escape(from_date.iso8601.to_s)}")
 
@@ -41,8 +41,9 @@ module Tele2
       return messages
     end
 
-    def send_message(iccid, message_text)
+    def send_message(iccid, send_iccid, message_text)
       params = Hash.new
+      params[:iccid] = send_iccid
       params[:messageText] = message_text
 
       response = self.client.put_request("/devices/#{@device['iccid']}/smsMessages", params)

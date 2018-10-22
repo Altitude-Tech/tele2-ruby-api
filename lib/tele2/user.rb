@@ -10,7 +10,23 @@ module Tele2
       @user = user
     end
 
-    def save(iccid)
+    def new(params)
+      @user[:username] = params['username']
+      @user[:roleName] = params['roleName']
+      @user[:accessType] = params['accessType']
+      @user[:accountName] = params['accountName']
+      @user[:customerName] = params['customerName']
+      @user[:firstName] = params['firstName']
+      @user[:lastName] = params['lastName']
+      @user[:email] = params['email']
+      @user[:phone] = params['phone']
+      @user[:language] = params['language']
+      @user[:timeZone] = params['timeZone']
+      @user[:liveUpdateEnabled] = params['liveUpdateEnabled']
+      save
+    end
+
+    def save(userId=nil)
       update_params = Hash.new
       update_params[:roleName] = @user['roleName']
       update_params[:accessType] = @user['accessType']
@@ -22,13 +38,20 @@ module Tele2
       update_params[:phone] = @user['phone']
       update_params[:language] = @user['language']
       update_params[:timeZone] = @user['timeZone']
-
-      self.client.put_request("/users/#{@user['userId']}", update_params)
+      if @user['iccid'] == nil
+        self.client.post_request("/users/", @user)
+      else
+        self.client.put_request("/users/#{@user['userId']}", update_params)
+      end
     end
 
     def user_name
       unless @user['username'] then request_api_data end
       @user['username']
+    end
+
+    def user_name=(str)
+      @user['username'] = str
     end
 
     def user_id
@@ -39,6 +62,10 @@ module Tele2
     def account_name
       unless @user['accountName'] then request_api_data end
       @user['accountName']
+    end
+
+    def account_name=(str)
+      @user['accountName'] = str
     end
 
     def account_id
@@ -135,6 +162,10 @@ module Tele2
     def customer_name
       unless @user['customerName'] then request_api_data end
       @user['customerName']
+    end
+
+    def custom_name=(str)
+      @user['customerName'] = str
     end
 
     def customer_id

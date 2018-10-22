@@ -25,6 +25,10 @@ module Tele2
       @users = Tele2::Users.new(self)
     end
 
+    def echo
+      @echo = Tele2::Echo.new(self)
+    end
+
     def get_request(url)
       #@options.marge(params)
       self.class.get(url, @options)

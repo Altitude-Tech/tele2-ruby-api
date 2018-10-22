@@ -87,8 +87,19 @@ module Tele2
       return locations
     end
 
+    def get_location_from_date(iccid, from_date)
+      response = self.client.get_request("/devices/#{iccid.to_s}/locationHistory?fromDate=#{from_date}")
+
+      locations = Array.new
+      response['simlocations'].each do |location|
+        locations << Location.new(self.client, location)
+      end
+
+      return locations
+    end
+
     def get_location_for_time(iccid, from_date, to_date)
-      response = self.client.get_request("/devices/#{iccid.to_s}/locationHistory")
+      response = self.client.get_request("/devices/#{iccid.to_s}/locationHistory?fromDate=#{from_date}&?toDate=#{to_date}")
 
       locations = Array.new
       response['simlocations'].each do |location|
