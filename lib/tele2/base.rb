@@ -39,6 +39,20 @@ module Tele2
       puts(self.class.put(url, @options))
     end
 
+    def post_request(url, params)
+      params = { :body => params.to_json, :headers => { "Content-Type" => 'application/json'} }
+
+      @options = @options.merge(params)
+      puts(@options)
+
+      puts(self.class.post(url, @options))
+    end
+
+    def delete_request(url)
+      #@options.marge(params)
+      self.class.delete(url, @options)
+    end
+
   end #class
 
 end #module

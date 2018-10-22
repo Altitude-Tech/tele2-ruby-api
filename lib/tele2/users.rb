@@ -10,9 +10,9 @@ module Tele2
       self.client = client
     end
 
-    def get_message(userId)
+    def get_user(userId)
       response = self.client.get_request("/users/#{userId}")
-      return Message.new(self.client, response)
+      return User.new(self.client, response)
     end
 
     def get_all_users
@@ -24,6 +24,14 @@ module Tele2
       end
 
       return users
+    end
+
+    def reset_user_password(userId)
+      response = self.client.put_request("/users/#{userId}/resetPassword")
+    end
+
+    def delete_user(userId)
+      response = self.client.delete_request("/users/#{userId}")
     end
 
   end #class

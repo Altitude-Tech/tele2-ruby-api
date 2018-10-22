@@ -10,13 +10,18 @@ module Tele2
       @device = device
     end
 
-    def save
+    def save(iccid)
       update_params = Hash.new
       update_params[:accountCustom1] = @device['accountCustom1']
       update_params[:customer] = @device['customer']
       update_params[:status] = @device['status']
+      update_params[:ratePlan] = @device['ratePlan']
+      update_params[:communicationPlan] = @device['communicationPlan']
+      update_params[:deviceID] = @device['deviceID']
+      update_params[:modemID] = @device['modemID']
+      update_params[:overageLimitOverride] = @device['overageLimitOverride']
 
-      self.client.put_request("/devices/#{@device['iccid']}", update_params)
+      response = self.client.put_request("/devices/#{@device['iccid']}", update_params)
     end
 
     def location
@@ -65,14 +70,26 @@ module Tele2
       @device['ratePlan']
     end
 
+    def rate_plan=(str)
+      @device['ratePlan'] = str
+    end
+
     def communication_plan
       unless @device['communicationPlan'] then request_api_data end
       @device['communicationPlan']
     end
 
+    def communication_plan=(str)
+      @device['communicationPlan'] = str
+    end
+
     def customer
       unless @device['customer'] then request_api_data end
       @device['customer']
+    end
+
+    def customer=(str)
+      @device['customer'] = str
     end
 
     def end_customer_id
@@ -119,9 +136,17 @@ module Tele2
       @device['deviceID']
     end
 
+    def device_id=(str)
+      @device['deviceID'] = str
+    end
+
     def modem_id
       unless @device['modemID'] then request_api_data end
       @device['modemID']
+    end
+
+    def modem_id=(str)
+      @device['modemID'] = str
     end
 
     def has_modem_id?
@@ -138,6 +163,15 @@ module Tele2
       @device['accountId']
     end
 
+    def overage_limit_override
+      unless @device['overageLimitOverride'] then request_api_data end
+      @device['overageLimitOverride']
+    end
+
+    def overage_limit_override=(str)
+      @device['overageLimitOverride'] = str
+    end
+
     def account_custom1
       unless @device['accountCustom1'] then request_api_data end
       @device['accountCustom1']
@@ -146,16 +180,7 @@ module Tele2
     def account_custom1=(str)
       @device['accountCustom1'] = str
     end
-
-    def customer
-      unless @device['customer'] then request_api_data end
-      @device['customer']
-    end
-
-    def customer=(str)
-      @device['customer'] = str
-    end
-
+    
     def request_api_data
       @device = self.client.get_request("/devices/#{iccid.to_s}")
       return true

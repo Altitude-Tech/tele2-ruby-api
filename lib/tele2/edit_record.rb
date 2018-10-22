@@ -9,16 +9,7 @@ module Tele2
 
       @record = record
     end
-
-    def save
-      # update_params = Hash.new
-      # update_params[:accountCustom1] = @device['accountCustom1']
-      # update_params[:customer] = @device['customer']
-      # update_params[:status] = @device['status']
-      #
-      # self.client.put_request("/devices/#{@device['iccid']}", update_params)
-    end
-
+    
     def field
       unless @record['field'] then request_api_data end
       @record['field']

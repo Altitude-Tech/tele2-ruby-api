@@ -9,16 +9,7 @@ module Tele2
 
       @message = message
     end
-
-    def save
-      # update_params = Hash.new
-      # update_params[:accountCustom1] = @device['accountCustom1']
-      # update_params[:customer] = @device['customer']
-      # update_params[:status] = @device['status']
-      #
-      # self.client.put_request("/devices/#{@device['iccid']}", update_params)
-    end
-
+    
     def sms_id
       unless @message['smsMsgId'] then request_api_data end
       @message['smsMsgId']
@@ -70,5 +61,5 @@ module Tele2
     end
 
   end #class
-  
+
 end #module
