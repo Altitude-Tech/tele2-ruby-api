@@ -10,7 +10,7 @@ module Tele2
 
     def echo(param)
       response = self.client.get_request("/echo/#{param}")
-      return reponse
+      return response
     end
 
   end #class

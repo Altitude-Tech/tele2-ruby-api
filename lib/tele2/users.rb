@@ -2,7 +2,7 @@ require_relative 'user'
 
 module Tele2
 
-  class User
+  class Users
 
     attr_accessor :client
 

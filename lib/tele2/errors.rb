@@ -450,6 +450,12 @@ module Tele2
     end
   end
 
+  class AccountChargeNotFount < StandardError
+    def initialize(msg="The specified account does not contain the specified charge")
+      super
+    end
+  end
+
   class  ReferenceChargeCombinationNotFound < StandardError
     def initialize(msg="The specified reference id/cahrge id conbination does not exist in the account")
       super
@@ -605,48 +611,3 @@ module Tele2
       super
     end
   end
-
-case @error
-when 1400101
-  throw CustomerNotFound
-when 1400102
-  throw RoleNotFound
-when 1400103
-  throw CouldNotCreateUser
-when 1400109
-  throw UserNotFound
-when 1400112
-  throw EmailIsEmpty
-when 1400116
-  throw InvalidEmail
-when 1400117
-  throw CouldNotUpdateUser
-when 1400119
-  throw LanguageEmpty
-when 1400121
-  throw FirstNameInvalid
-when 1400122
-  throw LastNameInvalid
-when 1400129
-  throw UserAccessTypeInvalid
-when 10000001
-  throw APICredentialsInvalid
-when 10000002
-  throw AccountIdMissing
-when 10000003
-  throw DateTimeMissing
-when 10000004
-  throw AccountIdInvalid
-when 10000005
-  throw SIMStatusInvalid
-when 10000006
-  throw PageSizeInvalid
-when 10000007
-  throw PageNumberInvalid
-when 10000008
-  throw NoOperatorCustomFieldPermission
-when 10000009
-  throw NoAccountCustomFieldPermission
-when 10000010
-  throw NoCustomerCustomFieldPermission
-end
