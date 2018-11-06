@@ -18,6 +18,7 @@ module Tele2
 
     def get_device(iccid)
       response = self.client.get_request("/devices/#{iccid.to_s}")
+      #puts(response)
       return Device.new(self.client, response)
     end
 
@@ -34,7 +35,7 @@ module Tele2
 
     def find_by_account_id(account_id, modified_since)
       response = self.client.get_request("/devices?accountId=#{account_id.to_s}&modifiedSince=#{CGI.escape(modified_since.iso8601.to_s)}")
-
+      #puts(response)
       devices = Array.new
       response['devices'].each do |device|
         devices << Device.new(self.client, device)
@@ -56,13 +57,13 @@ module Tele2
 
     def get_audit_history(iccid)
       response = self.client.get_request("/devices/#{iccid.to_s}/auditTrails")
-
-      edits = Array.new
-      response['deviceAuditTrails'].each do |record|
-        edits << ChangeRecord.new(self.client, record)
-      end
-
-      return edits
+      puts(response)
+      # edits = Array.new
+      # response['deviceAuditTrails'].each do |record|
+      #   edits << ChangeRecord.new(self.client, record)
+      # end
+      #
+      # return edits
     end
 
     def get_audit_history_days(iccid, days_of_history)
@@ -78,7 +79,7 @@ module Tele2
 
     def get_location_history(iccid)
       response = self.client.get_request("/devices/#{iccid.to_s}/locationHistory")
-
+      puts(response)
       locations = Array.new
       response['simlocations'].each do |location|
         locations << Location.new(self.client, location)

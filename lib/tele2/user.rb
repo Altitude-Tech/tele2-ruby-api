@@ -23,10 +23,10 @@ module Tele2
       @user[:language] = params['language']
       @user[:timeZone] = params['timeZone']
       @user[:liveUpdateEnabled] = params['liveUpdateEnabled']
-      save
+      self.client.post_request("/users/", @user)
     end
 
-    def save(userId=nil)
+    def save(userId)
       update_params = Hash.new
       update_params[:roleName] = @user['roleName']
       update_params[:accessType] = @user['accessType']
@@ -38,11 +38,7 @@ module Tele2
       update_params[:phone] = @user['phone']
       update_params[:language] = @user['language']
       update_params[:timeZone] = @user['timeZone']
-      if @user['iccid'] == nil
-        self.client.post_request("/users/", @user)
-      else
-        self.client.put_request("/users/#{@user['userId']}", update_params)
-      end
+      self.client.put_request("/users/#{@user['userId']}", update_params)
     end
 
     def user_name
@@ -215,6 +211,11 @@ module Tele2
     def date_modified
       unless @user['dateModified'] then request_api_data end
       @user['dateModified']
+    end
+
+    def request_api_data
+      @user = self.client.get_request("/users/#{userId}")
+      return true
     end
 
   end #class

@@ -33,6 +33,7 @@ module Tele2
       #@options.marge(params)
       response = self.class.get(url, @options)
       check_for_error(response)
+      return response
     end
 
     def put_request(url, params)
@@ -43,6 +44,7 @@ module Tele2
 
       response = puts(self.class.put(url, @options))
       check_for_error(response)
+      return response
     end
 
     def post_request(url, params)
@@ -53,15 +55,17 @@ module Tele2
 
       response = puts(self.class.post(url, @options))
       check_for_error(response)
+      return response
     end
 
     def delete_request(url)
       #@options.marge(params)
       response self.class.delete(url, @options)
       check_for_error(response)
+      return response
     end
 
-    def check_for_errors(response)
+    def check_for_error(response)
       case response
       when 1400101
         throw CustomerNotFound
