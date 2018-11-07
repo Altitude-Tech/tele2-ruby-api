@@ -10,7 +10,7 @@ module Tele2
       @location = location
     end
 
-    def locatiom
+    def location
       @location
     end
 
