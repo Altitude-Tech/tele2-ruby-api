@@ -13,16 +13,6 @@ module Tele2
       @usage
     end
 
-    def msisdn
-      unless @usage['msisdn'] then request_api_data end
-      @usage['msisdn']
-    end
-    
-    def communication_plan
-      unless @usage['communicationPlan'] then request_api_data end
-      @usage['communicationPlan']
-    end
-
     def ctd_data_usage
       unless @usage['ctdDataUsage'] then request_api_data end
       @usage['ctdDataUsage']

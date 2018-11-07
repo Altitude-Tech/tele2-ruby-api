@@ -12,7 +12,6 @@ module Tele2
 
     def save(iccid)
       update_params = Hash.new
-      update_params[:accountCustom1] = @device['accountCustom1']
       update_params[:customer] = @device['customer']
       update_params[:status] = @device['status']
       update_params[:ratePlan] = @device['ratePlan']
@@ -20,6 +19,17 @@ module Tele2
       update_params[:deviceID] = @device['deviceID']
       update_params[:modemID] = @device['modemID']
       update_params[:overageLimitOverride] = @device['overageLimitOverride']
+      update_params[:accountCustom1] = @device['accountCustom1']
+      update_params[:accountCustom2] = @device['accountCustom2']
+      update_params[:accountCustom3] = @device['accountCustom3']
+      update_params[:accountCustom4] = @device['accountCustom4']
+      update_params[:accountCustom5] = @device['accountCustom5']
+      update_params[:accountCustom6] = @device['accountCustom6']
+      update_params[:accountCustom7] = @device['accountCustom7']
+      update_params[:accountCustom8] = @device['accountCustom8']
+      update_params[:accountCustom9] = @device['accountCustom9']
+      update_params[:accountCustom10] = @device['accountCustom10']
+      update_params[:simNotes] = @device['simNotes']
 
       response = self.client.put_request("/devices/#{@device['iccid']}", update_params)
     end
@@ -153,6 +163,15 @@ module Tele2
       modem_id != nil
     end
 
+    def sim_notes
+      unless @device['simNotes'] then request_api_data end
+      @device['simNotes']
+    end
+
+    def sim_notes=(str)
+      @device['simNotes'] = str
+    end
+
     def global_sim_type
       unless @device['globalSimType'] then request_api_data end
       @device['globalSimType']
@@ -180,7 +199,88 @@ module Tele2
     def account_custom1=(str)
       @device['accountCustom1'] = str
     end
-    
+
+    def account_custom2
+      unless @device['accountCustom2'] then request_api_data end
+      @device['accountCustom2']
+    end
+
+    def account_custom2=(str)
+      @device['accountCustom2'] = str
+    end
+
+    def account_custom3
+      unless @device['accountCustom3'] then request_api_data end
+      @device['accountCustom3']
+    end
+
+    def account_custom3=(str)
+      @device['accountCustom3'] = str
+    end
+
+    def account_custom4
+      unless @device['accountCustom4'] then request_api_data end
+      @device['accountCustom4']
+    end
+
+    def account_custom4=(str)
+      @device['accountCustom4'] = str
+    end
+
+    def account_custom5
+      unless @device['accountCustom5'] then request_api_data end
+      @device['accountCustom5']
+    end
+
+    def account_custom5=(str)
+      @device['accountCustom5'] = str
+    end
+
+    def account_custom6
+      unless @device['accountCustom6'] then request_api_data end
+      @device['accountCustom6']
+    end
+
+    def account_custom6=(str)
+      @device['accountCustom6'] = str
+    end
+
+    def account_custom7
+      unless @device['accountCustom7'] then request_api_data end
+      @device['accountCustom7']
+    end
+
+    def account_custom7=(str)
+      @device['accountCustom7'] = str
+    end
+
+    def account_custom8
+      unless @device['accountCustom8'] then request_api_data end
+      @device['accountCustom8']
+    end
+
+    def account_custom8=(str)
+      @device['accountCustom8'] = str
+    end
+
+    def account_custom9
+      unless @device['accountCustom9'] then request_api_data end
+      @device['accountCustom9']
+    end
+
+    def account_custom9=(str)
+      @device['accountCustom9'] = str
+    end
+
+    def account_custom10
+      unless @device['accountCustom10'] then request_api_data end
+      @device['accountCustom10']
+    end
+
+    def account_custom10=(str)
+      @device['accountCustom10'] = str
+    end
+
     def request_api_data
       @device = self.client.get_request("/devices/#{iccid.to_s}")
       return true
