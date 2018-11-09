@@ -14,6 +14,7 @@ require_relative 'tele2/errors'
 #puts(tele2.find_by_accound_id(231121205, Time.new(2018))['devices'])
 
 # client = Tele2::Base.new('Frazerbarnes', '9a13a30b-d8d8-4e01-8908-04eefcf1a9e7')
+ 
 
 # devices = client.devices.find_by_account_id(231121205, Time.new(2018))
 # puts(devices)
