@@ -203,6 +203,15 @@ module Tele2
       @user['liveUpdateEnabled'] = str
     end
 
+    def user_privacy_enabled
+      unless @user['userPrivacyEnabled'] then request_api_data end
+      @user['userPrivacyEnabled']
+    end
+
+    def user_privacy_enabled=(str)
+      @user['userPrivacyEnabled'] = str
+    end
+
     def date_added
       unless @user['dateAdded'] then request_api_data end
       @user['dateAdded']
