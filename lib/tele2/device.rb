@@ -191,93 +191,93 @@ module Tele2
       @device['overageLimitOverride'] = str
     end
 
-    def account_custom1
+    def account_custom_1
       unless @device['accountCustom1'] then request_api_data end
       @device['accountCustom1']
     end
 
-    def account_custom1=(str)
+    def account_custom_1=(str)
       @device['accountCustom1'] = str
     end
 
-    def account_custom2
+    def account_custom_2
       unless @device['accountCustom2'] then request_api_data end
       @device['accountCustom2']
     end
 
-    def account_custom2=(str)
+    def account_custom_2=(str)
       @device['accountCustom2'] = str
     end
 
-    def account_custom3
+    def account_custom_3
       unless @device['accountCustom3'] then request_api_data end
       @device['accountCustom3']
     end
 
-    def account_custom3=(str)
+    def account_custom_3=(str)
       @device['accountCustom3'] = str
     end
 
-    def account_custom4
+    def account_custom_4
       unless @device['accountCustom4'] then request_api_data end
       @device['accountCustom4']
     end
 
-    def account_custom4=(str)
+    def account_custom_4=(str)
       @device['accountCustom4'] = str
     end
 
-    def account_custom5
+    def account_custom_5
       unless @device['accountCustom5'] then request_api_data end
       @device['accountCustom5']
     end
 
-    def account_custom5=(str)
+    def account_custom_5=(str)
       @device['accountCustom5'] = str
     end
 
-    def account_custom6
+    def account_custom_6
       unless @device['accountCustom6'] then request_api_data end
       @device['accountCustom6']
     end
 
-    def account_custom6=(str)
+    def account_custom_6=(str)
       @device['accountCustom6'] = str
     end
 
-    def account_custom7
+    def account_custom_7
       unless @device['accountCustom7'] then request_api_data end
       @device['accountCustom7']
     end
 
-    def account_custom7=(str)
+    def account_custom_7=(str)
       @device['accountCustom7'] = str
     end
 
-    def account_custom8
+    def account_custom_8
       unless @device['accountCustom8'] then request_api_data end
       @device['accountCustom8']
     end
 
-    def account_custom8=(str)
+    def account_custom_8=(str)
       @device['accountCustom8'] = str
     end
 
-    def account_custom9
+    def account_custom_9
       unless @device['accountCustom9'] then request_api_data end
       @device['accountCustom9']
     end
 
-    def account_custom9=(str)
+    def account_custom_9=(str)
       @device['accountCustom9'] = str
     end
 
-    def account_custom10
+    def account_custom_10
       unless @device['accountCustom10'] then request_api_data end
       @device['accountCustom10']
     end
 
-    def account_custom10=(str)
+    def account_custom_10=(str)
       @device['accountCustom10'] = str
     end
 
