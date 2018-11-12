@@ -16,8 +16,8 @@ module Tele2
     end
 
     def get_all_users
-      response = self.client.get_request("/users/")
-
+      response = self.client.get_request("/users")
+      puts(response)
       users = Array.new
       response['users'].each do |user|
         users << User.new(self.client, user)
@@ -34,5 +34,5 @@ module Tele2
       response = self.client.delete_request("/users/#{userId}")
     end
 
-  end #class
-end #module
+  end
+end

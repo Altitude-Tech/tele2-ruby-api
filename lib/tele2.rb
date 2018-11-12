@@ -13,7 +13,7 @@ require_relative 'tele2/errors'
 #tele2 = Tele2::Devices.new('Frazerbarnes', '9a13a30b-d8d8-4e01-8908-04eefcf1a9e7')
 #puts(tele2.find_by_accound_id(231121205, Time.new(2018))['devices'])
 
-client = Tele2::Base.new('Frazerbarnes', '9a13a30b-d8d8-4e01-8908-04eefcf1a9e7')
+client = Tele2::Base.new('meganjones', '92cc67f7-8f28-473d-8246-baf469c02542')
 
 
 # devices = client.devices.find_by_account_id(231121205, Time.new(2018))
@@ -31,11 +31,13 @@ client = Tele2::Base.new('Frazerbarnes', '9a13a30b-d8d8-4e01-8908-04eefcf1a9e7')
 # location_history = client.devices.get_location_history(89462036051001589115)
 # puts(location_history)
 
-device = client.devices.get_device(89462036051001589115)
-puts(device)
-custom = device.account_custom2
-puts(custom)
+# device = client.devices.get_device(89462036051001589115)
+# puts(device)
+# custom = device.account_custom2
+# puts(custom)
 
+# users = client.users.get_all_users()
+# puts(users)
 
 # if device.has_valid_iccid?
 #   puts(device.iccid)
