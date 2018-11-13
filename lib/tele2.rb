@@ -6,7 +6,6 @@ require_relative 'tele2/base'
 require_relative 'tele2/devices'
 require_relative 'tele2/messages'
 require_relative 'tele2/users'
-require_relative 'tele2/echo'
 require_relative 'tele2/errors'
 
 
