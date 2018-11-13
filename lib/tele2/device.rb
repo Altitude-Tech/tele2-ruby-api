@@ -6,7 +6,7 @@ module Tele2
 
     def initialize(client, device=nil)
       self.client = client
-
+      @iccid = device['iccid']
       @device = device
     end
 
@@ -282,7 +282,7 @@ module Tele2
     end
 
     def request_api_data
-      @device = self.client.get_request("/devices/#{iccid.to_s}")
+      @device = self.client.get_request("/devices/#{@iccid.to_s}")
       return true
     end
 

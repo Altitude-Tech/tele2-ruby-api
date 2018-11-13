@@ -6,7 +6,7 @@ module Tele2
 
     def initialize(client, user=nil)
       self.client = client
-
+      @userId = user['userId']
       @user = user
     end
 
@@ -223,7 +223,7 @@ module Tele2
     end
 
     def request_api_data
-      @user = self.client.get_request("/users/#{userId}")
+      @user = self.client.get_request("/users/#{@userId.to_s}")
       return true
     end
 
