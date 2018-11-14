@@ -1,6 +1,6 @@
 module Tele2
 
-  class EditRecord
+  class AuditRecord
 
     attr_accessor :client
 
@@ -9,7 +9,7 @@ module Tele2
 
       @record = record
     end
-    
+
     def field
       unless @record['field'] then request_api_data end
       @record['field']

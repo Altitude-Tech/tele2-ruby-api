@@ -2,7 +2,7 @@ require_relative 'device'
 require_relative 'location'
 require_relative 'usage'
 require_relative 'session'
-require_relative 'edit_record'
+require_relative 'audit_record'
 require_relative 'zone_usage'
 require_relative 'session'
 
@@ -57,10 +57,10 @@ module Tele2
 
     def get_audit_history(iccid)
       response = self.client.get_request("/devices/#{iccid.to_s}/auditTrails")
-      #puts(response)
+      puts(response)
       edits = Array.new
       response['deviceAuditTrails'].each do |record|
-        edits << ChangeRecord.new(self.client, record)
+        edits << AuditRecord.new(self.client, record)
       end
 
       return edits
@@ -71,7 +71,7 @@ module Tele2
 
       edits = Array.new
       response['deviceAuditTrails'].each do |record|
-        edits << ChangeRecord.new(self.client, record)
+        edits << AuditRecord.new(self.client, record)
       end
 
       return edits
@@ -112,6 +112,7 @@ module Tele2
 
     def get_zone_usage(iccid)
       response = self.client.get_request("/devices/#{iccid.to_s}/usageInZone")
+      puts(response)
       return ZoneUsage.new(self.client, response)
     end
 

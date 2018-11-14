@@ -7,6 +7,7 @@ module Tele2
     def initialize(client, iccid)
       self.client = client
       @session = self.client.get_request("/devices/#{iccid.to_s}/sessionInfo")
+      puts(@session)
     end
 
     def session
