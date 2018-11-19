@@ -35,7 +35,7 @@ module Tele2
 
     def find_by_account_id(account_id, modified_since)
       response = self.client.get_request("/devices?accountId=#{account_id.to_s}&modifiedSince=#{CGI.escape(modified_since.iso8601.to_s)}")
-      puts(response)
+      #puts(response)
       devices = Array.new
       response['devices'].each do |device|
         devices << Device.new(self.client, device)
@@ -57,7 +57,7 @@ module Tele2
 
     def get_audit_history(iccid)
       response = self.client.get_request("/devices/#{iccid.to_s}/auditTrails")
-      puts(response)
+      #puts(response)
       edits = Array.new
       response['deviceAuditTrails'].each do |record|
         edits << AuditRecord.new(self.client, record)
@@ -79,7 +79,7 @@ module Tele2
 
     def get_location_history(iccid)
       response = self.client.get_request("/devices/#{iccid.to_s}/locationHistory")
-      puts(response)
+      #puts(response)
       locations = Array.new
       response['simlocations'].each do |location|
         locations << Location.new(self.client, location)
@@ -112,7 +112,7 @@ module Tele2
 
     def get_zone_usage(iccid)
       response = self.client.get_request("/devices/#{iccid.to_s}/usageInZone")
-      puts(response)
+      #puts(response)
       return ZoneUsage.new(self.client, response)
     end
 
