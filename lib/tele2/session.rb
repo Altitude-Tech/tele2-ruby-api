@@ -7,6 +7,7 @@ module Tele2
     def initialize(client, iccid)
       self.client = client
       @session = self.client.get_request("/devices/#{iccid.to_s}/sessionInfo")
+      @iccid = iccid
       puts(@session)
     end
 
@@ -32,6 +33,11 @@ module Tele2
 
     def end_date
       @session['dateSessionEnded']
+    end
+
+    def request_api_data
+      @session = self.client.get_request("/devices/#{@iccid.to_s}/sessionInfo")
+      return true
     end
 
   end
