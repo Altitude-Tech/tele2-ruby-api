@@ -7,7 +7,7 @@ module Tele2
     def initialize(client, iccid)
       self.client = client
       @usage = self.client.get_request("/devices/#{iccid.to_s}/ctdUsages")
-      puts(@usage)
+      #puts(@usage)
     end
 
     def usage
