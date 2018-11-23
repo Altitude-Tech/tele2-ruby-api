@@ -8,7 +8,6 @@ module Tele2
       self.client = client
       @session = self.client.get_request("/devices/#{iccid.to_s}/sessionInfo")
       @iccid = iccid
-      #puts(@session)
     end
 
     def session

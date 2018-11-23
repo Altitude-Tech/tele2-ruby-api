@@ -4,30 +4,28 @@ module Tele2
 
     attr_accessor :client
 
-    def initialize(client, uzone)
+    def initialize(client, iccid, key, uzone, dates)
       self.client = client
-
+      @dates = dates
+      @iccid = iccid
+      @key = key
       @uzone = uzone
     end
 
     def iccid
-      unless @uzone['iccid'] then request_api_data end
-      @uzone['iccid']
+      @iccid
     end
 
     def timestamp
-      unless @uzone['timestamp'] then request_api_data end
-      @uzone['timestamp']
+      @dates['time']
     end
 
     def cycle_start_date
-      unless @uzone['cycleStartDate'] then request_api_data end
-      @uzone['cycleStartDate']
+      @dates['start']
     end
 
     def cycle_end_date
-      unless @uzone['cycleEndDate'] then request_api_data end
-      @uzone['cycleEndDate']
+      @dates['end_date']
     end
 
     def rate_plan
@@ -85,6 +83,12 @@ module Tele2
       @uzone['voiceMTUsageUnit']
     end
 
-  end #class
+    def request_api_data
+      response = self.client.get_request("/devices/#{iccid.to_s}/usageInZone")
+      @uzone = response['deviceCycleUsageInZones']['@key']
+      return true
+    end
 
-end #module
+  end
+
+end

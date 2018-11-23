@@ -13,21 +13,29 @@ require_relative 'tele2/errors'
 #puts(tele2.find_by_accound_id(231121205, Time.new(2018))['devices'])
 
 # client = Tele2::Base.new('meganjones', 'c7a8b1c0-c20e-43e3-a5a9-759209dd0e3b')
-# client = Tele2::Base.new('Frazerbarnes', '9a13a30b-d8d8-4e01-8908-04eefcf1a9e7')
-#
-#  devices = client.devices.find_by_account_id(231121205, Time.new(2018))
-# # puts(devices)
-#
-#  devices.each do |d|
-#    iccid = d.iccid
-#    puts(iccid)
-#    usage = d.usage.ctd_data_usage
-#    puts(usage)
-#    # session = d.session
-#  end
+client = Tele2::Base.new('Frazerbarnes', '9a13a30b-d8d8-4e01-8908-04eefcf1a9e7')
 
-# zone_usage = client.devices.get_zone_usage(iccid)
-# puts(zone_usage)
+devices = client.devices.find_by_account_id(231121205, Time.new(2018))
+puts(devices)
+
+
+zone_usage = Array.new
+devices.each do |d|
+ iccid = d.iccid
+ puts(iccid)
+ history = client.devices.get_audit_history(iccid)
+ puts(history)
+ # zone_usage << client.devices.get_zone_usage(iccid)
+ # puts(zone_usage)
+ # usage = d.usage.ctd_data_usage
+ # puts(usage)
+ # session = d.session
+end
+
+# zone_usage.each do |zu|
+#   zone = zu.zone
+#   puts(zone)
+# end
 
 # d.account_custom1 = 'CCA119R'
 # d.customer = 'ACCOUNT_ALTITUDE_23320'
