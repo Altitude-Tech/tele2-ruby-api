@@ -9,7 +9,7 @@ module Tele2
       @dates = dates
       @iccid = iccid
       @key = key
-      puts(@key)
+      #puts(@key)
       @uzone = zone['@key']
     end
 

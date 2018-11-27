@@ -57,7 +57,7 @@ module Tele2
 
     def get_audit_history(iccid)
       response = self.client.get_request("/devices/#{iccid.to_s}/auditTrails")
-      #puts(response)
+      # puts(response)
       edits = Array.new
       response['deviceAuditTrails'].each do |record|
         edits << AuditRecord.new(self.client, record)
