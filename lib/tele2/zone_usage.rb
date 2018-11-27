@@ -4,12 +4,13 @@ module Tele2
 
     attr_accessor :client
 
-    def initialize(client, iccid, key, uzone, dates)
+    def initialize(client, iccid, key, zone, dates)
       self.client = client
       @dates = dates
       @iccid = iccid
       @key = key
-      @uzone = uzone
+      puts(@key)
+      @uzone = zone['@key']
     end
 
     def iccid

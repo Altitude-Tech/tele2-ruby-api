@@ -16,7 +16,7 @@ module Tele2
     end
 
     def prior_value
-      unless @Crecord['priorValue'] then request_api_data end
+      unless @record['priorValue'] then request_api_data end
       @record['priorValue']
     end
 

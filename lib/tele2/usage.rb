@@ -8,7 +8,7 @@ module Tele2
       self.client = client
       @usage = self.client.get_request("/devices/#{iccid.to_s}/ctdUsages")
       @iccid = iccid
-      #puts(@usage)
+      puts(@usage)
     end
 
     def usage

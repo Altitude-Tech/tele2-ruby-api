@@ -57,7 +57,7 @@ module Tele2
 
     def get_audit_history(iccid)
       response = self.client.get_request("/devices/#{iccid.to_s}/auditTrails")
-      puts(response)
+      #puts(response)
       edits = Array.new
       response['deviceAuditTrails'].each do |record|
         edits << AuditRecord.new(self.client, record)
@@ -112,12 +112,13 @@ module Tele2
 
     def get_zone_usage(iccid)
       response = self.client.get_request("/devices/#{iccid.to_s}/usageInZone")
+      #puts(response)
       dates = Hash.new
       dates[:time] = response[:timeStamp]
       dates[:start] = response[:cycleStartDate]
       dates[:end_date] = response[:cycleEndDate]
 
-      zone_usages = Array.new
+      zone_usages = Hash.new
       response['deviceCycleUsageInZones'].each do |key, zone_usage|
         zone_usages << ZoneUsage.new(self.client, iccid, key, zone_usage, dates)
       end
