@@ -10,6 +10,15 @@ module Tele2
       self.client = client
     end
 
+    def get_messages()
+      response = self.client.get_request("/smsMessages")
+      messgaes = Array.new
+      response['smsMsgIds'].each do |message|
+	messages << get_message(message)
+      end
+      return messages
+    end
+
     def get_message(smsMsgId)
       response = self.client.get_request("/smsMessages/#{smsMsgId.to_s}")
       return Message.new(self.client, response)

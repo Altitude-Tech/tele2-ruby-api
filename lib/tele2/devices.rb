@@ -112,7 +112,7 @@ module Tele2
 
     def get_zone_usage(iccid)
       response = self.client.get_request("/devices/#{iccid.to_s}/usageInZone")
-      #puts(response)
+      puts(response)
       dates = Hash.new
       dates[:time] = response[:timeStamp]
       dates[:start] = response[:cycleStartDate]
@@ -140,6 +140,6 @@ module Tele2
       return ZoneUsage.new(self.client, response)
     end
 
-  end #class
+  end
 
-end #module
+end
