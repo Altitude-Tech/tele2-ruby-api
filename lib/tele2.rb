@@ -18,6 +18,8 @@ require_relative 'tele2/errors'
 #devices = client.devices.find_by_account_id(231121205, Time.new(2018))
 # puts(devices)
 
+# messages = client.messages.get_messages()
+# puts(messages)
 
 #zone_usages = Array.new
 #devices.each do |d|

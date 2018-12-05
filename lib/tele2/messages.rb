@@ -12,9 +12,11 @@ module Tele2
 
     def get_messages()
       response = self.client.get_request("/smsMessages")
-      messgaes = Array.new
-      response['smsMsgIds'].each do |message|
-	messages << get_message(message)
+      messages = Array.new
+      unless response['smsMsgIds'] == nil
+        response['smsMsgIds'].each do |message|
+  	       messages << get_message(message)
+        end
       end
       return messages
     end
