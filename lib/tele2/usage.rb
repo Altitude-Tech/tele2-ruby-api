@@ -44,6 +44,16 @@ module Tele2
       unless @usage['overageLimitOverride'] then request_api_data end
       @usage['overageLimitOverride']
     end
+      
+    def rate_plan
+      unless @usage['rate_plan'] then request_api_data end
+      @usage['rate_plan']
+    end
+      
+    def communication_plan
+      unless @usage['communicationPlan'] then request_api_data end
+      @usage['communicationPlan']
+    end
 
     def request_api_data
       @usage = self.client.get_request("/devices/#{@iccid.to_s}/ctdUsages")
