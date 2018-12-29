@@ -10,7 +10,7 @@ module Tele2
       @device = device
     end
 
-    def save(iccid)
+    def save
       update_params = Hash.new
       update_params[:customer] = @device['customer']
       update_params[:status] = @device['status']
