@@ -14,7 +14,7 @@ module Tele2
       update_params = Hash.new
       #update_params[:customer] = @device['customer']
       update_params[:status] = @device['status']
-      #update_params[:ratePlan] = @device['ratePlan']
+      update_params[:ratePlan] = @device['ratePlan']
       #update_params[:communicationPlan] = @device['communicationPlan']
       #update_params[:deviceID] = @device['deviceID']
       #update_params[:modemID] = @device['modemID']
