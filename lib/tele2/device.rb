@@ -52,6 +52,15 @@ module Tele2
       @device['iccid']
     end
 
+    def rate_plan
+      unless @device['ratePlan'] then request_api_data end
+      @device['ratePlan']
+    end
+
+    def rate_plan=(str)
+      @device['ratePlan'] = str
+    end
+
     def has_valid_iccid?
       @device['iccid'] != nil
     end
@@ -73,15 +82,6 @@ module Tele2
 
     def status=(str)
       @device['status'] = str
-    end
-
-    def rate_plan
-      unless @device['ratePlan'] then request_api_data end
-      @device['ratePlan']
-    end
-
-    def rate_plan=(str)
-      @device['ratePlan'] = str
     end
 
     def communication_plan
